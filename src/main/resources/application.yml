@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: "external-oauth-service-spring"
+  flyway:
+    user: ${DB_USER}
+    password: ${DB_PASSWORD}
+    url: ${DB_ADDRESS}
+    schemas: [${DB_SCHEMA}]
