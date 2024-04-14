@@ -1,7 +1,7 @@
 package org.lexxv.externaloauthservicespring.modules.connection
 
-import BaseEntity
 import jakarta.persistence.*
+import org.lexxv.externaloauthservicespring.common.database.entity.BaseEntity
 import org.lexxv.externaloauthservicespring.modules.externaloauth.ExternalOauthEntity
 
 /**
@@ -20,7 +20,6 @@ class ConnectionEntity(
     val userId: String? = null,
 
     @ManyToOne()
-    @JoinColumn(name = "external_oauth_id", referencedColumnName = "id")
     val externalOauth: ExternalOauthEntity? = null
 ) : BaseEntity() {}
 

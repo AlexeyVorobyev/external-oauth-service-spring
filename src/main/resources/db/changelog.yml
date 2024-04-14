@@ -1,0 +1,6 @@
+databaseChangeLog:
+  - includeAll:
+      path: changelog
+      relativeToChangelogFile: true
+      errorIfMissingorEmpty: true
+      resourceComparator: org.lexxv.liquibase.ChangeLogComparator

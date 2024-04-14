@@ -1,0 +1,88 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1713104552444-1
+      author: lexxv (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_connection
+                  name: id
+                  type: UUID
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_at
+                  type: timestamp
+              - column:
+                  constraints:
+                    nullable: false
+                  name: updated_at
+                  type: timestamp
+              - column:
+                  constraints:
+                    nullable: false
+                  name: user_id
+                  type: VARCHAR(255)
+              - column:
+                  name: external_oauth_id
+                  type: UUID
+            tableName: connection
+  - changeSet:
+      id: 1713104552444-2
+      author: lexxv (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_external_oauth
+                  name: id
+                  type: UUID
+              - column:
+                  constraints:
+                    nullable: false
+                  name: created_at
+                  type: timestamp
+              - column:
+                  constraints:
+                    nullable: false
+                  name: updated_at
+                  type: timestamp
+              - column:
+                  constraints:
+                    nullable: false
+                  name: recognition_key
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+            tableName: external_oauth
+  - changeSet:
+      id: 1713104552444-3
+      author: lexxv (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: recognition_key
+            constraintName: uc_external_oauth_recognition_key
+            tableName: external_oauth
+  - changeSet:
+      id: 1713104552444-4
+      author: lexxv (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: external_oauth_id
+            baseTableName: connection
+            constraintName: FK_CONNECTION_ON_EXTERNALOAUTH
+            referencedColumnNames: id
+            referencedTableName: external_oauth
+

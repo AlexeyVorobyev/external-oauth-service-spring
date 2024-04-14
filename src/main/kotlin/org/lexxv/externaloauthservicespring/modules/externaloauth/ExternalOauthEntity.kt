@@ -1,10 +1,7 @@
 package org.lexxv.externaloauthservicespring.modules.externaloauth
 
-import BaseEntity
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.OneToMany
-import jakarta.persistence.Table
+import jakarta.persistence.*
+import org.lexxv.externaloauthservicespring.common.database.entity.BaseEntity
 import org.lexxv.externaloauthservicespring.modules.connection.ConnectionEntity
 
 /**
@@ -26,7 +23,11 @@ class ExternalOauthEntity(
     @Column(name = "name")
     val name: String? = null,
 
-    @OneToMany()
+    @OneToMany(
+        cascade = [CascadeType.ALL],
+        orphanRemoval = true
+    )
+    @JoinColumn(name = "external_oauth_id", referencedColumnName = "id")
     val connections: MutableList<ConnectionEntity> = ArrayList()
 ) : BaseEntity() {
 }

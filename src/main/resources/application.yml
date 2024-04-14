@@ -1,8 +1,42 @@
+server:
+  port: ${SERVER_PORT:8080}
+  address: ${SERVER_ADDRESS:127.0.0.1}
+  max-http-request-header-size: 128KB
+  tomcat:
+    threads:
+      min-spare: 0
+
 spring:
+  config:
+    import: optional:file:.env[.properties]
   application:
     name: "external-oauth-service-spring"
-  flyway:
-    user: ${DB_USER}
-    password: ${DB_PASSWORD}
-    url: ${DB_ADDRESS}
-    schemas: [${DB_SCHEMA}]
+  jpa:
+    show-sql: ${DEBUG_SHOW_SQL:false}
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+        format_sql: ${DEBUG_FORMAT_SQL:false}
+        session:
+          events:
+            log: false
+  datasource:
+    url: jdbc:postgresql://${DB_ADDRESS:localhost}:${DB_PORT:5432}/${DB_DATABASE:db}?ApplicationName=external-oauth-service-spring&currentSchema=public
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:admin}
+    hikari:
+      connectionTimeout: 15000
+      maximumPoolSize: 50
+  liquibase:
+    change-log: db/changelog.yml
+    url: jdbc:postgresql://${DB_ADDRESS:localhost}:${DB_PORT:5432}/${DB_DATABASE:db}?ApplicationName=external-oauth-service-spring&currentSchema=public
+    user: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:admin}
+    liquibase-schema: public
+  graphql:
+    schema:
+      locations: ""
+

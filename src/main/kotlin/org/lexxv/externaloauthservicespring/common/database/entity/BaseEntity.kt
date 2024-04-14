@@ -1,3 +1,5 @@
+package org.lexxv.externaloauthservicespring.common.database.entity
+
 import jakarta.persistence.*
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
