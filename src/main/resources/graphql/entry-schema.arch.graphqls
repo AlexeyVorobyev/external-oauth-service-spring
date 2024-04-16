@@ -1,0 +1,100 @@
+directive @deprecatedInput on INPUT_FIELD_DEFINITION
+directive @ContainerSize(min: Int = 0, max: Int = 2147483647, message: String = "graphql.validation.ContainerSize.message") on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION | INPUT_OBJECT
+directive @Pattern(regexp: String! = ".*", message: String = "graphql.validation.Pattern.message") on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+directive @Size(min: Int = 0, max: Int = 2147483647, message: String = "graphql.validation.Size.message") on ARGUMENT_DEFINITION | INPUT_FIELD_DEFINITION
+
+"""
+Application ({appName}) Version: {appVer}
+Schema File: {schemaName}
+Created At: {createdAt}
+"""
+schema {
+    query: Query
+}
+
+"Запросы получения данных"
+type Query {
+    externalOauthQueries: ExternalOauthQueries
+}
+
+"Неотрицательное вещественные число"
+scalar NonNegativeFloat
+"Неотрицательное целое число"
+scalar NonNegativeInt
+"Дата и время"
+scalar DateTime
+"Положительно число (больше 0)"
+scalar PositiveInt
+"Идентификатор в формате UUID"
+scalar UUID
+
+"Статусы результата изменений"
+enum OperationStatusEnum {
+    "Операция выполнена успешно"
+    OK
+    "Операция выполнена с ошибками"
+    ERROR
+}
+
+"Интерфейс результата изменений"
+interface MutationMetaAttributesInterface {
+    "Идентификатор операции"
+    operationId: UUID!
+    "Статус"
+    status: OperationStatusEnum!
+}
+
+"Параметры постраничной навигации"
+input PaginationInput {
+    "Страница списка"
+    page: NonNegativeInt! = 0
+    "Количество элементов на странице. Максимальное количество 1000"
+    perPage: PositiveInt! = 20
+}
+
+"Информация о постраничной навигации списка элементов. Возвращается с каждым списком"
+type PaginationInfoAttributes {
+    "Общее количество страниц"
+    totalPages: Int!
+    "Общее количество элементов"
+    totalItems: Int!
+    "Номер текущей страницы"
+    page: Int!
+    "Количество элементов на странице"
+    perPage: Int!
+    "Есть ли следующая страница"
+    hasNextPage: Boolean!
+    "Есть ли предыдущая страница"
+    hasPreviousPage: Boolean!
+}
+
+"Период дат для фильтров"
+input DateTimeRangeInput {
+    "Дата начала"
+    start: DateTime
+    "Дата окончания"
+    end: DateTime
+}
+
+"Простой поиск"
+input SimpleFilterInput {
+    "Строка поиска"
+    query: String!
+}
+
+"Поиск для автодополнения"
+input AutocompleteFilterInput {
+    "Строка поиска"
+    query: String! @Size(min: 2, max: 200)
+}
+
+"Данные ошибки"
+type Problem {
+    "Код ошибки"
+    code: Int!
+    "Имя ошибки"
+    name: String!
+    "Сообщение"
+    message: String!
+}
+

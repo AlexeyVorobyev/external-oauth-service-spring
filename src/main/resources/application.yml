@@ -41,4 +41,18 @@ spring:
     schema:
       locations: ""
 
+
+graphql:
+  playground:
+    cdn:
+      enabled: true
+    enabled: true
+  servlet:
+    maxQueryDepth: 15
+    maxQueryComplexity: 1000
+    enabled: true
+    exception-handlers-enabled: true
+    actuator-metrics: true
+
+
 debug: true

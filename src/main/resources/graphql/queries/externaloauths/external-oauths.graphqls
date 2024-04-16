@@ -1,0 +1,76 @@
+"Сортировка для настроечной таблицы метрик"
+enum ExternalOauthSortEnum {
+    "Наименование по возрастанию"
+    NAME_ASC
+    "Наименование по убыванию"
+    NAME_DESC
+}
+
+type ExternalOauthQueries {
+    "Получение списка внешних авторизационных сервисов"
+    list(input: ExternalOauthListInput!): ExternalOauthListAttributes!
+    "Вывод внешнего авторизационного сервиса"
+    record(id: UUID!): ExternalOauthAttributes
+}
+
+"Инпут списка внешних авторизационных сервисов"
+input ExternalOauthListInput {
+    filter: ExternalOauthFilterInput
+    sort: [ExternalOauthSortEnum!]
+    pagination: PaginationInput
+}
+
+"Фильтр внешних авторизационных сервисов"
+input ExternalOauthFilterInput {
+    "Параметры простого поиска (title, description)"
+    simpleFilter: SimpleFilterInput
+    "Параметры поиска для автодополнения (title)"
+    autocompleteFilter: AutocompleteFilterInput
+    "Параметры полного поиска"
+    entityFilter: ExternalOauthEntityFilterInput
+}
+
+"Поля фильтра метрик"
+input ExternalOauthEntityFilterInput {
+    "Идентификатор"
+    id: [UUID!]
+    "Дата создания"
+    createdAt: DateTimeRangeInput
+    "Дата редактирования"
+    updatedAt: DateTimeRangeInput
+}
+
+"Список метрик"
+type ExternalOauthListAttributes {
+    "Информация о странице"
+    pageInfo: PaginationInfoAttributes!
+    "Информация о сортировке"
+    sortInfo: ExternalOauthSortInfoAttributes!
+    "Список элементов"
+    items: [ExternalOauthAttributes!]!
+}
+
+"Информация о сортировке метрик"
+type ExternalOauthSortInfoAttributes {
+    "Текущая сортировка"
+    current: [ExternalOauthSortEnum!]!
+    "Возможные варианты сортировки"
+    allowed: [ExternalOauthSortEnum!]!
+}
+
+"Данные метрики"
+type ExternalOauthAttributes {
+    "Уникальный идентификатор"
+    id: UUID!
+    "Внутренний ключ распознавания"
+    recognitionKey: String!
+    "Наименование"
+    name: String!
+    "Описание"
+    description: String!
+    "Дата создания"
+    createdAt: DateTime!
+    "Дата редактирования"
+    updatedAt: DateTime!
+}
+
