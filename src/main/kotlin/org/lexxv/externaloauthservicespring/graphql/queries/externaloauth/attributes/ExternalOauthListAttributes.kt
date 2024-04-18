@@ -1,7 +1,7 @@
 package org.lexxv.externaloauthservicespring.graphql.queries.externaloauth.attributes
 
 import org.lexxv.externaloauthservicespring.entities.ExternalOauthEntity
-import org.lexxv.externaloauthservicespring.graphql.attributes.BasePageableListAttributes
+import org.lexxv.externaloauthservicespring.graphql.attributes.BaseEntityListAttributes
 import org.lexxv.externaloauthservicespring.graphql.attributes.PaginationInfoAttributes
 import org.lexxv.externaloauthservicespring.sort.ExternalOauthSortEnum
 import org.lexxv.externaloauthservicespring.sort.SortInfo
@@ -17,4 +17,4 @@ class ExternalOauthListAttributes(
     val sortInfo: SortInfo<ExternalOauthSortEnum>,
     pageInfo: PaginationInfoAttributes? = null,
     items: Iterable<ExternalOauthEntity>? = null
-): BasePageableListAttributes<ExternalOauthEntity>(page,pageInfo,items)
+): BaseEntityListAttributes<ExternalOauthEntity>(page,pageInfo,items)

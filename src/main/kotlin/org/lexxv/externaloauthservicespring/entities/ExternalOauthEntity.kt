@@ -9,6 +9,7 @@ import jakarta.persistence.*
  * @property recognitionKey Ключ, для распознавания подключения оконечным адаптером
  * @property connections Подключения пользователей к данному сервису авторизации
  * @property name Название внешнего сервиса авторизации
+ * @property description Описание
  *
  * @author Alexey Vorobyev <mister.alex49@yandex.ru>
  * */

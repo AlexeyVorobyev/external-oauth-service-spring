@@ -1,4 +1,4 @@
-package org.lexxv.externaloauthservicespring.graphql.inputs
+package org.lexxv.externaloauthservicespring.api.input
 
 /**
  * Интерфейс Описывающий пагинацию.

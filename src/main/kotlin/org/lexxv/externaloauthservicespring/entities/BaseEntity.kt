@@ -27,7 +27,7 @@ abstract class BaseEntity: EntityInterface {
     @Column(name = "created_at", nullable = false)
     lateinit var createdAt: OffsetDateTime
 
-    @UpdateTimestamp
+    @UpdateTimestamp()
     @Column(name = "updated_at", nullable = false)
     lateinit var updatedAt: OffsetDateTime
 

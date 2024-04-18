@@ -1,6 +1,5 @@
-package org.lexxv.externaloauthservicespring.graphql.attributes
+package org.lexxv.externaloauthservicespring.api.attributes
 
-import org.lexxv.externaloauthservicespring.graphql.problems.Problem
 import java.util.*
 
 /**

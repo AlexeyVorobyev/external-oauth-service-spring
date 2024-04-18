@@ -5,7 +5,7 @@ import org.springframework.data.domain.Sort
 /**
  * Enumerate класс, реализующий параметры сортировки и сущности внешнего авторизационного сервиса
  * */
-enum class ExternalOauthSortEnum: SortableInterface {
+enum class ExternalOauthSortEnum: SortableInputInterface {
     /**
      * Наименование по возрастанию
      */

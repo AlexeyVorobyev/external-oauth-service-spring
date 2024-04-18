@@ -8,7 +8,7 @@ package org.lexxv.externaloauthservicespring.sort
  *
  * @author Alexey Vorobyev <mister.alex49@yandex.ru>
  */
-class SortInfo<Sortable:SortableInterface>(
+class SortInfo<Sortable:SortableInputInterface>(
     val current: Iterable<Sortable>,
     val allowed: Iterable<Sortable>
 )

@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1713380084151-2
+      author: lexxv (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addColumn:
+            columns:
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+            tableName: external_oauth
+  - changeSet:
+      id: 1713380084151-1
+      author: lexxv (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addNotNullConstraint:
+            columnDataType: VARCHAR(255)
+            columnName: name
+            tableName: external_oauth
+            validate: true
+

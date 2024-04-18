@@ -1,4 +1,4 @@
-package org.lexxv.externaloauthservicespring.graphql.attributes
+package org.lexxv.externaloauthservicespring.api.attributes
 
 import org.lexxv.externaloauthservicespring.graphql.enums.OperationStatusEnum
 import org.lexxv.externaloauthservicespring.graphql.problems.Problem

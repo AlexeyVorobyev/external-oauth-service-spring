@@ -6,7 +6,7 @@ import javax.validation.ConstraintViolationException
 import org.lexxv.externaloauthservicespring.entities.EntityInterface
 import org.lexxv.externaloauthservicespring.exceptions.BuiltinTypeException
 import org.lexxv.externaloauthservicespring.exceptions.EntityNotFoundException
-import org.lexxv.externaloauthservicespring.graphql.attributes.MutationMetaAttributesInterface
+import org.lexxv.externaloauthservicespring.api.attributes.MutationMetaAttributesInterface
 import org.lexxv.externaloauthservicespring.graphql.enums.OperationStatusEnum
 import org.lexxv.externaloauthservicespring.graphql.problems.Problem
 import org.lexxv.externaloauthservicespring.services.DatabaseMutationServiceInterface

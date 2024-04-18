@@ -1,5 +1,7 @@
 package org.lexxv.externaloauthservicespring.graphql.inputs
 
+import org.lexxv.externaloauthservicespring.api.input.PaginationInputInterface
+
 /**
  * Параметры пагинации.
  *

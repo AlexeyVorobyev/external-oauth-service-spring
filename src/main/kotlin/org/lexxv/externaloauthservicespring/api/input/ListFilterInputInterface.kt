@@ -1,10 +1,8 @@
-package org.lexxv.externaloauthservicespring.graphql.inputs
-
-import java.io.Serializable
+package org.lexxv.externaloauthservicespring.api.input
 
 /**
  * Интерфейс, описывающий инпут для фильтра
  *
  * @author Alexey Vorobyev <mister.alex49@yandex.ru>
  * */
-interface FilterInputInterface : Serializable
+interface ListFilterInputInterface

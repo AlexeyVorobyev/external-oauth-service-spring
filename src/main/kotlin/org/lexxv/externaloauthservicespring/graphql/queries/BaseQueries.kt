@@ -1,16 +1,13 @@
 package org.lexxv.externaloauthservicespring.graphql.queries
 
-import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.node.ObjectNode
-import java.util.*
 import org.lexxv.externaloauthservicespring.entities.EntityInterface
-import org.lexxv.externaloauthservicespring.graphql.inputs.PaginationInput
-import org.lexxv.externaloauthservicespring.graphql.attributes.PageableListAttributesInterface
-import org.lexxv.externaloauthservicespring.graphql.inputs.PageableListInputInterface
-import org.lexxv.externaloauthservicespring.graphql.inputs.PaginationInputInterface
-import org.lexxv.externaloauthservicespring.services.DatabaseQueryServiceInterface
-import org.lexxv.externaloauthservicespring.sort.SortableInterface
+import org.lexxv.externaloauthservicespring.api.attributes.EntityListAttributesInterface
+import org.lexxv.externaloauthservicespring.api.input.EntityListInputInterface
+import org.lexxv.externaloauthservicespring.api.input.PaginationInputInterface
+import org.lexxv.externaloauthservicespring.sort.SortableInputInterface
 import org.lexxv.lib.jsonmapper.JsonMapper
+import java.util.*
 
 /**
  * Базовый класс обработчиков GraphQL-запросов на чтение.
@@ -21,13 +18,12 @@ import org.lexxv.lib.jsonmapper.JsonMapper
  */
 abstract class BaseQueries<
         Entity : EntityInterface,
-        ResultList : PageableListAttributesInterface<Entity>,
-        Sortable: SortableInterface,
-        ListInput: PageableListInputInterface<Sortable>
+        ResultList : EntityListAttributesInterface<Entity>,
+        Sortable: SortableInputInterface,
+        ListInput: EntityListInputInterface<Sortable>
         >(
     protected open val dbService: DatabaseQueryServiceInterface<Entity>
 ) {
-
     /**
      * Возвращает список сущностей.
      *
@@ -36,7 +32,7 @@ abstract class BaseQueries<
      * @return Список
      */
     protected open fun list(input: ListInput): ResultList {
-        return dbService.findAll(input.filter, getSort(input.sort as Iterable<Sortable>), getPagination(input.pagination)) as ResultList
+        return dbService.findAll(input.filter, getSort(input.sort), getPagination(input.pagination)) as ResultList
     }
 
     /**

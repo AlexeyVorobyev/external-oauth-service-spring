@@ -44,14 +44,8 @@ class JwtService {
         return true
     }
 
-    fun getAccessClaims(token: String): Claims {
-        val publicKey: PublicKey = loadPublicKey()
-        return getClaims(token, publicKey)
-    }
-
-    private fun getClaims(token: String, secret: PublicKey): Claims {
+    fun getClaims(token: String): Claims {
         return Jwts.parser()
-            .verifyWith(secret)
             .build()
             .parseSignedClaims(token)
             .payload

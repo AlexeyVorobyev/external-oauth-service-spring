@@ -11,5 +11,5 @@ import java.util.UUID
  * @author Alexey Vorobyev <mister.alex49@yandex.ru>
  * */
 @Repository
-interface ConnectionRepository : JpaRepository<ConnectionEntity, UUID> {
+interface ConnectionRepository : BaseRepository<ConnectionEntity> {
 }

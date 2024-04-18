@@ -1,7 +1,6 @@
-package org.lexxv.externaloauthservicespring.graphql.attributes
+package org.lexxv.externaloauthservicespring.api.attributes
 
-import org.lexxv.externaloauthservicespring.entities.EntityInterface
-
+import org.lexxv.externaloauthservicespring.graphql.attributes.PaginationInfoAttributes
 
 /**
  * Интерфейс списков с пагинацией.
@@ -15,7 +14,7 @@ import org.lexxv.externaloauthservicespring.entities.EntityInterface
  *
  * @author Alexey Vorobyev <mister.alex49@yandex.ru>
  */
-interface PageableListAttributesInterface<Entity : EntityInterface> {
+interface EntityListAttributesInterface<EntityAttributes : EntityAttributesInterface> {
     var pageInfo: PaginationInfoAttributes?
-    var items: Iterable<Entity>?
+    var items: Iterable<EntityAttributes>?
 }

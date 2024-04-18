@@ -10,7 +10,7 @@ import org.springframework.data.domain.Sort
  *
  * @author Alexey Vorobyev <mister.alex49@yandex.ru>
  */
-interface SortableInterface {
+interface SortableInputInterface {
     /**
      * Возвращает объект сортировки для БД.
      *
